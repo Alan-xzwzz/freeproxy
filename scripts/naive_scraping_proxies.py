@@ -55,16 +55,27 @@ def row(src: str, s: dict) -> list:
     ]
 
 
+'''savetotxt'''
+def savetotxt(proxies: list[ProxyInfo], save_path: str = "free_proxies.txt") -> None:
+    with open(save_path, "w", encoding="utf-8") as fp:
+        for proxy in proxies:
+            fp.write(f"{proxy.proxy}\n")
+
+
 '''main'''
 def main():
-    free_proxies, items = {}, []
+    free_proxies, all_proxies, items = {}, [], []
     for src in tqdm(SOURCES):
         proxies = scrape(src)
         items.append(row(src, stats(proxies)))
         free_proxies[src] = [p.todict() for p in proxies]
+        all_proxies.extend(proxies)
     print("The proxy distribution for each source you specified is as follows:")
     printtable(titles=TITLES, items=items, terminal_right_space_len=1)
-    json.dump(free_proxies, open("free_proxies.json", "w"), indent=2)
+    with open("free_proxies.json", "w", encoding="utf-8") as fp:
+        json.dump(free_proxies, fp, indent=2)
+    savetotxt(all_proxies)
+    print(f"Saved {len(all_proxies)} proxies to free_proxies.txt")
 
 
 '''tests'''
