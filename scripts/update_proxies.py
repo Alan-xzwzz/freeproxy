@@ -75,6 +75,17 @@ def fetchjsonendpoint2(ep):
     print(f"[JSON2] proxies fetched: {len(proxies)}")
     return proxies
 
+'''savetotxt'''
+def savetotxt(proxies: list, save_path: str = "proxies.txt") -> None:
+    with open(save_path, "w", encoding="utf-8") as fp:
+        for proxy in proxies:
+            ip, port = proxy.get("ip"), proxy.get("port")
+            if not ip or not port:
+                continue
+            protocols = [p.strip().lower() for p in str(proxy.get("protocol") or "").split(",") if p.strip()]
+            for protocol in protocols:
+                fp.write(f"{protocol}://{ip}:{port}\n")
+
 
 '''main'''
 def main():
@@ -97,6 +108,7 @@ def main():
     data = {"updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC"), "count": len(all_proxies), "data": all_proxies}
     with open("proxies.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+    savetotxt(all_proxies)
     print(f"[DONE] Saved {len(all_proxies)} proxies to proxies.json")
 
 
