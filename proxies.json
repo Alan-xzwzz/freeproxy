@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03 13:59:37 UTC",
+  "updated_at": "2026-11-03 14:13:35 UTC",
   "count": 184,
   "data": [
     {
@@ -251,16 +251,16 @@
       "speed": 2544
     },
     {
-      "ip": "101.132.252.152",
-      "port": 8123,
+      "ip": "106.14.104.220",
+      "port": 6666,
       "protocol": "Http",
       "country": "CN",
       "anonymity": "Elite",
       "speed": 2556
     },
     {
-      "ip": "106.14.104.220",
-      "port": 6666,
+      "ip": "101.132.252.152",
+      "port": 8123,
       "protocol": "Http",
       "country": "CN",
       "anonymity": "Elite",
@@ -1283,7 +1283,7 @@
       "speed": 6104
     },
     {
-      "ip": "103.238.232.202",
+      "ip": "103.101.216.66",
       "port": 8080,
       "protocol": "Https",
       "country": "ID",
@@ -1291,7 +1291,7 @@
       "speed": 6115
     },
     {
-      "ip": "103.101.216.66",
+      "ip": "103.238.232.202",
       "port": 8080,
       "protocol": "Https",
       "country": "ID",
